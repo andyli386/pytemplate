@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "mypackage"
+version = "0.1.0"
+description = "Python project template with Poetry and uv"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+license = "MIT"
+packages = [{include = "mypackage", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+# Add your dependencies here
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+ruff = "^0.11.4"
+mypy = "^1.15.0"
+pytest = "^8.3.5"
+pytest-cov = "^6.1.1"
+pre-commit = "^4.2.0"
+pip-audit = "^2.9.0"
+typos = "^1.31.1"
+
+[tool.poetry.scripts]
+mypackage = "mypackage.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+include = '\.pyi?$'
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+select = ["E", "F", "I"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
